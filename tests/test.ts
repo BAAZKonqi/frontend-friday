@@ -22,3 +22,9 @@ test('button 1 is selectable',async ({page}) => {
 	await page.getByRole('button', { name: '1' }).click();
 	await expect(page.getByRole('button', { name: '1' })).toBeFocused();
 })
+
+test('button 1 is orange if focused',async ({page}) => {
+	await page.goto('/');
+	await page.getByRole('button', { name: '1' }).focus();
+	await expect(page.getByRole('button', { name: '1' })).toHaveCSS('color', 'bg-orange-500');
+})
