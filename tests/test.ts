@@ -9,3 +9,10 @@ test('index page has submit button', async ({ page }) => {
 	await page.goto('/');
 	await expect(page.getByRole('button', { name: 'SUBMIT' })).toBeVisible();
 });
+
+test('index page has 5 numbered buttons', async ({ page }) => {
+	await page.goto('/');
+	for (const n of [1, 2, 3, 4, 5]) {
+		await expect(page.getByRole('button', { name: n.toString() })).toBeVisible();
+	}
+});
