@@ -26,5 +26,5 @@ test('button 1 is selectable',async ({page}) => {
 test('button 1 is orange if focused',async ({page}) => {
 	await page.goto('/');
 	await page.getByRole('button', { name: '1' }).focus();
-	await expect(page.getByRole('button', { name: '1' })).toHaveCSS('color', 'bg-orange-500');
+	expect(await page.$eval('#rating-button-1', e => getComputedStyle(e).backgroundColor)).toBe('rgb(249, 115, 22)');
 })
