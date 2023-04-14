@@ -16,3 +16,9 @@ test('index page has 5 numbered buttons', async ({ page }) => {
 		await expect(page.getByRole('button', { name: n.toString() })).toBeVisible();
 	}
 });
+
+test('button 1 is selectable',async ({page}) => {
+	await page.goto('/');
+	await page.getByRole('button', { name: '1' }).click();
+	await expect(page.getByRole('button', { name: '1' })).toBeFocused();
+})
